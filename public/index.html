@@ -26,6 +26,28 @@
  ]
 }
 </script>
+<script type="text/javascript">
+//<![CDATA[
+// GoatCounter analytics: loaded after the page finishes loading, so it never delays it.
+window.goatcounter = {endpoint: 'https://russo.goatcounter.com/count'};
+window.addEventListener('load', function () {
+  var s = document.createElement('script');
+  s.src = 'https://gc.zgo.at/count.js';
+  document.body.appendChild(s);
+});
+// Log every link click as an event, named after where it goes.
+document.addEventListener('click', function (e) {
+  var a = e.target.closest ? e.target.closest('a') : null;
+  if (!a || !window.goatcounter || !window.goatcounter.count) return;
+  var img = a.getElementsByTagName('img')[0];
+  window.goatcounter.count({
+    path: 'click-' + a.href.replace(/^https?:\/\//, ''),
+    title: (img ? img.alt : a.textContent).replace(/\s+/g, ' '),
+    event: true
+  });
+});
+//]]>
+</script>
 <style type="text/css">
 body { margin: 4em; font-family: Georgia, serif; color: #111; background: #fff; }
 h1 { font-weight: normal; font-size: 1em; margin: 0 0 4em 0; }
